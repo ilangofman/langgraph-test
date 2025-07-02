@@ -1,0 +1,86 @@
+# agents_config.yaml - Configuration file for the supervisor agent
+
+agents:
+  rag_agent:
+    path: "./agents/rag_agent.py"
+    class_name: "RAGAgent"
+    description: "Retrieves and processes information from documents and knowledge bases"
+    capabilities:
+      - "document_retrieval"
+      - "semantic_search"
+      - "context_aware_qa"
+      - "citation_generation"
+    tools:
+      - "vector_database"
+      - "document_parser"
+      - "embedding_model"
+    priority: 2
+    parameters:
+      vector_store_path: "./data/vector_store"
+      embedding_model: "text-embedding-ada-002"
+      chunk_size: 1000
+      similarity_threshold: 0.7
+
+  conversation_agent:
+    path: "./agents/conversation_agent.py"
+    class_name: "ConversationAgent"
+    description: "Handles follow-up questions and maintains conversational context"
+    capabilities:
+      - "context_tracking"
+      - "follow_up_handling"
+      - "conversation_memory"
+      - "clarification_requests"
+    tools:
+      - "memory_store"
+      - "context_analyzer"
+    priority: 1
+    parameters:
+      memory_window: 10
+      context_similarity_threshold: 0.8
+
+  tool_agent:
+    path: "./agents/tool_agent.py"
+    class_name: "ToolAgent"
+    description: "Executes external tools and API calls"
+    capabilities:
+      - "api_integration"
+      - "data_processing"
+      - "external_service_calls"
+      - "tool_orchestration"
+    tools:
+      - "web_search"
+      - "calculator"
+      - "weather_api"
+      - "database_connector"
+    priority: 3
+    parameters:
+      timeout: 30
+      max_retries: 3
+      rate_limit: 100
+
+  research_agent:
+    path: "./agents/research_agent.py"
+    class_name: "ResearchAgent"
+    description: "Conducts comprehensive research using multiple sources and tools"
+    capabilities:
+      - "multi_source_research"
+      - "fact_checking"
+      - "report_generation"
+      - "source_validation"
+    tools:
+      - "web_search"
+      - "academic_databases"
+      - "fact_checker"
+      - "citation_formatter"
+    priority: 4
+    parameters:
+      max_sources: 10
+      research_depth: "comprehensive"
+      include_citations: true
+
+# Global settings
+settings:
+  default_llm_model: "gpt-4-turbo-preview"
+  max_conversation_history: 50
+  response_timeout: 60
+  log_level: "INFO"
