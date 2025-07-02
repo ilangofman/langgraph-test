@@ -1,0 +1,47 @@
+# simple_config.yaml - Simple test configuration for basic supervisor functionality
+
+agents:
+  echo_agent:
+    path: "./test_agents/echo_agent.py"
+    class_name: "EchoAgent"
+    description: "Simple agent that echoes messages with a prefix"
+    capabilities:
+      - "echo"
+      - "simple_response"
+    tools: []
+    priority: 1
+    parameters:
+      prefix: "Echo Agent says: "
+
+  math_agent:
+    path: "./test_agents/math_agent.py"
+    class_name: "MathAgent"
+    description: "Simple math calculator agent"
+    capabilities:
+      - "basic_math"
+      - "calculations"
+    tools:
+      - "calculator"
+    priority: 2
+    parameters:
+      max_operations: 10
+
+  greeting_agent:
+    path: "./test_agents/greeting_agent.py"
+    class_name: "GreetingAgent"
+    description: "Handles greetings and introductions"
+    capabilities:
+      - "greetings"
+      - "introductions"
+      - "social_interaction"
+    tools: []
+    priority: 1
+    parameters:
+      friendly_mode: true
+
+# Global settings
+settings:
+  default_azure_deployment: "gpt-4"
+  max_conversation_history: 10
+  response_timeout: 30
+  log_level: "INFO"
